@@ -52,7 +52,18 @@ function render(){
  $("#feedback").className="feedback hidden";$("#feedback").innerHTML="";$("#checkBtn").classList.remove("hidden");$("#nextBtn").classList.add("hidden");
  document.querySelectorAll("#challengeMap button").forEach((b,i)=>{b.className=state.solved.has(i)?"solved":i===state.i?"active":""});
  let w=$("#workspace");w.innerHTML="";
- if(type==="choice"){let o=document.createElement("div");o.className="options";data.forEach((x,i)=>{let b=document.createElement("button");b.className="option";b.textContent=x;b.dataset.v=i;b.onclick=()=>{o.querySelectorAll(".option").forEach(z=>z.classList.remove("selected"));b.classList.add("selected")};o.appendChild(b)});w.appendChild(o)}
+ if(type==="choice"){
+  let o=document.createElement("div");o.className="options";
+  // Distribuye la respuesta correcta entre la 1.ª, 2.ª y 3.ª posición
+  // para que la selección única no siga un patrón predecible.
+  const choiceNumber=challenges.slice(0,state.i+1).filter(q=>q[2]==="choice").length-1;
+  const targetPosition=choiceNumber % data.length;
+  const wrongIndexes=data.map((_,i)=>i).filter(i=>i!==answer);
+  const order=[];let wi=0;
+  for(let pos=0;pos<data.length;pos++) order.push(pos===targetPosition?answer:wrongIndexes[wi++]);
+  order.forEach(originalIndex=>{let b=document.createElement("button");b.className="option";b.textContent=data[originalIndex];b.dataset.v=originalIndex;b.onclick=()=>{o.querySelectorAll(".option").forEach(z=>z.classList.remove("selected"));b.classList.add("selected")};o.appendChild(b)});
+  w.appendChild(o)
+ }
  else {let box=document.createElement("div");box.className="codebox";box.innerHTML='<div class="codebar">ejercicio.py</div><pre></pre>';box.querySelector("pre").textContent=data;w.appendChild(box);let a=document.createElement("div");a.className="answer-wrap";a.innerHTML='<label>Completa únicamente lo que falta:</label><input id="answer" class="answer-input" autocomplete="off" spellcheck="false">';w.appendChild(a);setTimeout(()=>$("#answer")?.focus(),50)}
 }
 function check(){
