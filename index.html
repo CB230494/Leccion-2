@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programación Aplicada | Laboratorio de Repaso · Lección 2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">&lt;/&gt;</span><div><b>PROGRAMACIÓN APLICADA</b><small>Laboratorio de repaso · Lección 2</small></div></div>
+    <div id="hud" class="hud hidden">
+      <span>RETO <b id="hudCurrent">1</b>/30</span><span>✓ <b id="hudCorrect">0</b></span><span>⏱ <b id="timer">00:00</b></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="welcome" class="screen welcome">
+      <div class="hero-card glass">
+        <div class="eyebrow">FUNCIONES · DATOS · OBJETOS</div>
+        <h1>30 desafíos.<br><span>Demuestra cómo organizar un programa.</span></h1>
+        <p>Repaso interactivo de la Lección 2: funciones y modularidad, parámetros y return, listas, diccionarios, listas de diccionarios y Programación Orientada a Objetos.</p>
+        <div class="feature-grid">
+          <div><b>30</b><small>retos</small></div><div><b>∞</b><small>intentos</small></div><div><b>LIVE</b><small>retroalimentación</small></div>
+        </div>
+        <label class="name-label">Nombre del estudiante</label>
+        <input id="studentName" class="main-input" maxlength="40" placeholder="Escribe tu nombre">
+        <button id="startBtn" class="primary">INICIAR NUEVO INTENTO <span>→</span></button>
+        <div id="records" class="records"></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="screen hidden">
+      <div class="progress-shell"><div id="progressBar"></div></div>
+      <div class="quiz-layout">
+        <aside class="side glass">
+          <div class="side-title">MAPA DE RETOS</div>
+          <div id="challengeMap" class="challenge-map"></div>
+          <div class="legend"><span><i class="dot done"></i>Resuelto</span><span><i class="dot current"></i>Actual</span></div>
+        </aside>
+        <article class="challenge glass">
+          <div class="challenge-head">
+            <div><span id="category" class="category">FUNCIONES</span><span id="difficulty" class="difficulty">BÁSICO</span></div>
+            <span id="challengeNumber" class="number">01</span>
+          </div>
+          <h2 id="title"></h2>
+          <p id="prompt" class="prompt"></p>
+          <div id="workspace"></div>
+          <div id="feedback" class="feedback hidden"></div>
+          <div class="actions">
+            <button id="checkBtn" class="primary">PROBAR SOLUCIÓN</button>
+            <button id="nextBtn" class="secondary hidden">SIGUIENTE RETO →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="results" class="screen hidden">
+      <div class="result-card glass">
+        <div class="eyebrow">INTENTO FINALIZADO</div>
+        <h1>Resultado de <span id="resultName"></span></h1>
+        <div class="score-ring"><strong id="finalScore">0/30</strong><span>retos resueltos</span></div>
+        <div class="result-stats">
+          <div><b id="finalTime">00:00</b><small>tiempo</small></div>
+          <div><b id="firstTry">0</b><small>al primer intento</small></div>
+          <div><b id="totalErrors">0</b><small>correcciones</small></div>
+        </div>
+        <div id="categoryResults" class="category-results"></div>
+        <div id="recordMessage" class="record-message"></div>
+        <button id="restartBtn" class="primary">INICIAR OTRO INTENTO</button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
